@@ -26,7 +26,7 @@ export default [
       {
         file: pkg.browser,
         format: 'umd',
-        name: 'MyMark',
+        name: 'Pagein',
       },
     ],
   },
