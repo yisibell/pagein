@@ -9,7 +9,8 @@
 </p>
 
 # pagein
-A tiny paging function tool (分页查询工具函数)。
+
+A tiny paging util function.
 
 # Installation
 
@@ -151,3 +152,7 @@ const { total, data } = paging(ori, { currentPage: 1, pageSize: 2 }, condition)
 console.log(total) // 查询结果总条数，3
 console.log(data) // 查询结果, [{ a: 'foo' }, { a: 'foo' }]
 ```
+
+# CHANGE LOG
+
+SEE <a href="./CHANGELOG.md">CHANGE LOG</a>
