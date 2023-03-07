@@ -1,7 +1,7 @@
 {
   "name": "pagein",
   "version": "1.0.1",
-  "description": "A tiny paging function tool.",
+  "description": "A tiny paging util function.",
   "main": "dist/pagein.cjs.js",
   "module": "dist/pagein.esm.js",
   "browser": "dist/pagein.umd.js",
@@ -14,7 +14,8 @@
   "keywords": [
     "pagination",
     "paging",
-    "tool"
+    "tool",
+    "util"
   ],
   "files": [
     "dist",
