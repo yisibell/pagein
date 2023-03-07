@@ -1,4 +1,4 @@
-import { PagingReturns, Options, Origin, Condition } from '../src/interface'
+import type { PagingReturns, Options, Origin, Condition } from '../src/interface'
 
 declare function paging(
   origin: Origin,

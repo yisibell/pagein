@@ -1,5 +1,5 @@
 import get from 'lodash/get'
-import { ConditionValidMap, ArrayOfString, Paging } from './interface'
+import type { ConditionValidMap, ArrayOfString, Paging } from './interface'
 
 const paging: Paging = (origin, options, condition) => {
   origin = !origin ? [] : origin

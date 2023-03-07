@@ -9,12 +9,16 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "release": "npm publish --access=public"
+    "release": "npm run build && changelogen --release && npm publish --access=public && git push --follow-tags"
   },
   "keywords": [
     "pagination",
     "paging",
     "tool"
+  ],
+  "files": [
+    "dist",
+    "types"
   ],
   "author": {
     "name": "elenh",
@@ -33,6 +37,7 @@
     "@types/lodash": "^4.14.178",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "changelogen": "^0.5.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
