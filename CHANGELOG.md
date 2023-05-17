@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v2.0.0
+
+[compare changes](https://github.com/yisibell/pagein/compare/v1.0.3...v2.0.0)
+
+
+### 🚀 Enhancements
+
+  - ⚠️  Refactor paging options ([ba05563](https://github.com/yisibell/pagein/commit/ba05563))
+
+#### ⚠️  Breaking Changes
+
+  - ⚠️  Refactor paging options ([ba05563](https://github.com/yisibell/pagein/commit/ba05563))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.0.3
 
 [compare changes](https://github.com/yisibell/pagein/compare/v1.0.2...v1.0.3)
