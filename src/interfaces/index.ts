@@ -1,4 +1,4 @@
-export type OriginalData = Record<string, any>[]
+export type OriginalData<T = Record<string, any>> = T[]
 
 export type ArrayOfString = string[]
 
@@ -31,10 +31,10 @@ export interface Pagination {
   pageSize?: number
 }
 
-export interface PagingReturns {
+export interface PagingReturns<T> {
   total: number
   originTotal: number
-  data: OriginalData
+  data: OriginalData<T>
   currentPage: number
   pageSize: number
 }
@@ -44,7 +44,7 @@ export interface PagingOptions {
   conditions?: Conditions
 }
 
-export type Paging = (
-  originalData: OriginalData,
+export type Paging = <T>(
+  originalData: OriginalData<T>,
   options?: PagingOptions
-) => PagingReturns
+) => PagingReturns<T>
