@@ -1,35 +1,37 @@
 import get from 'lodash/get'
-import type { ConditionValidMap, ArrayOfString, Paging } from './interface'
+import type { ConditionValidMap, ArrayOfString, Paging } from './interfaces'
 
-const paging: Paging = (origin, options, condition) => {
-  origin = !origin ? [] : origin
+const paging: Paging = (originalData, { pagination, conditions } = {}) => {
+  originalData = !originalData ? [] : originalData
 
-  const { currentPage = 0, pageSize = 0 } = options || {}
+  const { currentPage = 0, pageSize = 0 } = pagination || {}
 
   const start_index = (currentPage - 1) * pageSize
   const end_index = start_index + pageSize
-  const originTotal = origin.length // origin total data
+  const originTotal = originalData.length // originalData total data
   const isAllConditionNull =
-    !condition || condition.every((v) => v.value === '' || v.value === null) // 是否存在有效过滤条件
+    !conditions || conditions.every((v) => v.value === '' || v.value === null) // 是否存在有效过滤条件
 
   let data = []
   let total = 0
 
-  // get all origin data when all condition is null character string.
+  // get all originalData data when all conditions is null character string.
   if (isAllConditionNull) {
     data =
-      currentPage && pageSize ? origin.slice(start_index, end_index) : origin
-    total = origin.length
+      currentPage && pageSize
+        ? originalData.slice(start_index, end_index)
+        : originalData
+    total = originalData.length
   } else {
     // filter data
-    const filteredArr = origin.filter((ori) => {
-      const validMap = condition.reduce((o, v) => {
+    const filteredArr = originalData.filter((ori) => {
+      const validMap = conditions.reduce((o, v) => {
         o[v.key] = true
         return o
       }, {} as ConditionValidMap)
 
       for (const k in validMap) {
-        const curr_condition_o = condition.find((v) => v.key === k) // 某条件信息对象
+        const curr_condition_o = conditions.find((v) => v.key === k) // 某条件信息对象
 
         if (validMap.hasOwnProperty(k) && curr_condition_o) {
           const curr_condition_o_val = curr_condition_o.value
@@ -82,7 +84,7 @@ const paging: Paging = (origin, options, condition) => {
       return true
     })
 
-    // pagination data from condition filter
+    // pagination data from conditions filter
     data =
       currentPage && pageSize
         ? filteredArr.slice(start_index, end_index)

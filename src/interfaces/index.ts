@@ -1,9 +1,4 @@
-export interface Options {
-  currentPage?: number
-  pageSize?: number
-}
-
-export type Origin = Array<{ [key: string]: any }>
+export type OriginalData = Record<string, any>[]
 
 export type ArrayOfString = string[]
 
@@ -27,22 +22,29 @@ export interface ConditionItem {
   ) => boolean
 }
 
-export type Condition = Array<ConditionItem>
+export type Conditions = Array<ConditionItem>
 
-export interface ConditionValidMap {
-  [key: string]: boolean
+export type ConditionValidMap = Record<string, boolean>
+
+export interface Pagination {
+  currentPage?: number
+  pageSize?: number
 }
 
 export interface PagingReturns {
   total: number
   originTotal: number
-  data: Origin
+  data: OriginalData
   currentPage: number
   pageSize: number
 }
 
+export interface PagingOptions {
+  pagination?: Pagination
+  conditions?: Conditions
+}
+
 export type Paging = (
-  origin: Origin,
-  options?: Options,
-  condition?: Condition
+  originalData: OriginalData,
+  options?: PagingOptions
 ) => PagingReturns

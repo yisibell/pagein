@@ -28,7 +28,7 @@ $ npm i pagein
 
 1. **ori {Array of Object}**： 源数据（必需）。
 
-2. **options {Object}**： 配置（不启用分页时可不传，或传入 `{}`）。
+2. **options.pagination {Object}**： 分页控制。
 
 ``` js
 {
@@ -37,12 +37,10 @@ $ npm i pagein
 }
 ```
 
-3. **condition {Array of Object}**： 查询条件。
-
-`condition` 作为 `paging` 的第三个参数，表示查询条件，可选。
+3. **options.conditions {Array of Object}**： 查询条件。
 
 ``` js
-const condition = [
+const conditions = [
   {
     // 检索字段、属性键名（必需）。
     key: 'a', 
@@ -73,14 +71,14 @@ const ori = [
   { a: { b: 'foo1'} },
 ]
 
-const condition = [
+const conditions = [
   {
     key: 'a.b',
     value: 'foo'
   }
 ]
 
-const { data } = paging(ori, {}, condition)
+const { data } = paging(ori, { conditions } )
 console.log(data) // [{ a: { b: 'foo'} }]
 ```
 
@@ -115,11 +113,11 @@ const ori = [
 ]
 
 // 查询条件
-const condition = [
+const conditions = [
   { key: 'a', value: 'foo' }
 ]
 
-const { total, data } = paging(ori, {}, condition)
+const { total, data } = paging(ori, { conditions } )
 
 console.log(total) // 查询结果总条数，1
 console.log(data) // 查询结果, [{ a: 'foo' }]
@@ -142,12 +140,18 @@ const ori = [
   { a: 'foo' }
 ]
 
+// 分页控制
+const pagination = {
+  currentPage: 1, 
+  pageSize: 2
+}
+
 // 查询条件
-const condition = [
+const conditions = [
   { key: 'a', value: 'foo' }
 ]
 
-const { total, data } = paging(ori, { currentPage: 1, pageSize: 2 }, condition)
+const { total, data } = paging(ori, { pagination , conditions })
 
 console.log(total) // 查询结果总条数，3
 console.log(data) // 查询结果, [{ a: 'foo' }, { a: 'foo' }]

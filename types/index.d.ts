@@ -1,9 +1,11 @@
-import type { PagingReturns, Options, Origin, Condition } from '../src/interface'
+import type {
+  Paging,
+  Pagination,
+  Conditions,
+  PagingOptions,
+  PagingReturns,
+} from '../src/interfaces'
 
-declare function paging(
-  origin: Origin,
-  options?: Options,
-  condition?: Condition
-): PagingReturns
+declare const paging: Paging
 
-export { paging }
+export { paging, Pagination, Conditions, PagingOptions, PagingReturns }
