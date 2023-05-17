@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v2.2.0
+
+[compare changes](https://github.com/yisibell/pagein/compare/v2.1.0...v2.2.0)
+
+
+### 🚀 Enhancements
+
+  - Update == to === for default valid ([d34818a](https://github.com/yisibell/pagein/commit/d34818a))
+
+### 🏡 Chore
+
+  - Sync dist ([66199dd](https://github.com/yisibell/pagein/commit/66199dd))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v2.1.0
 
 [compare changes](https://github.com/yisibell/pagein/compare/v2.0.0...v2.1.0)
