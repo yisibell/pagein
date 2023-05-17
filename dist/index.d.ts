@@ -1,9 +1,4 @@
-interface Options {
-  currentPage?: number
-  pageSize?: number
-}
-
-type Origin = Array<{ [key: string]: any }>
+type OriginalData = Record<string, any>[]
 
 type ArrayOfString = string[]
 
@@ -27,20 +22,31 @@ interface ConditionItem {
   ) => boolean
 }
 
-type Condition = Array<ConditionItem>
+type Conditions = Array<ConditionItem>
+
+interface Pagination {
+  currentPage?: number
+  pageSize?: number
+}
 
 interface PagingReturns {
   total: number
   originTotal: number
-  data: Origin
+  data: OriginalData
   currentPage: number
   pageSize: number
 }
 
-declare function paging(
-  origin: Origin,
-  options?: Options,
-  condition?: Condition
-): PagingReturns
+interface PagingOptions {
+  pagination?: Pagination
+  conditions?: Conditions
+}
 
-export { paging };
+type Paging = (
+  originalData: OriginalData,
+  options?: PagingOptions
+) => PagingReturns
+
+declare const paging: Paging
+
+export { Conditions, Pagination, PagingOptions, PagingReturns, paging };
