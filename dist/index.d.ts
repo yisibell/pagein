@@ -1,4 +1,4 @@
-type OriginalData = Record<string, any>[]
+type OriginalData<T = Record<string, any>> = T[]
 
 type ArrayOfString = string[]
 
@@ -29,10 +29,10 @@ interface Pagination {
   pageSize?: number
 }
 
-interface PagingReturns {
+interface PagingReturns<T> {
   total: number
   originTotal: number
-  data: OriginalData
+  data: OriginalData<T>
   currentPage: number
   pageSize: number
 }
@@ -42,10 +42,10 @@ interface PagingOptions {
   conditions?: Conditions
 }
 
-type Paging = (
-  originalData: OriginalData,
+type Paging = <T>(
+  originalData: OriginalData<T>,
   options?: PagingOptions
-) => PagingReturns
+) => PagingReturns<T>
 
 declare const paging: Paging
 
