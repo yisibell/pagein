@@ -52,9 +52,9 @@ const conditions = [
     // 是否对该字段启用日期范围检索
     // 设置了该属性为 true 后，value 的格式需为 [2019-02-13, 2020-02-14]，两个值可以被 new Date() 解析即可。
     daterange: false, 
-    // 自定义检索方法，该方法被传入两个参数：`conditionValue`（当前条件字段值，即 value ），`originValue`（源数据中对应字段值）。
+    // 自定义检索方法，该方法被传入两个参数：`conditionValue`（当前条件字段值，即 value ），`originalValue`（源数据中对应字段值）。
     // 返回 true 则表示该值满足条件，被放入查询结果中。
-    validHandler: (conditionValue, originValue) => {}
+    validHandler: (conditionValue, originalValue) => {}
   }
   // ...
 ]

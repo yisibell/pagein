@@ -6,8 +6,8 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
 
   const { currentPage = 0, pageSize = 0 } = pagination || {}
 
-  const start_index = (currentPage - 1) * pageSize
-  const end_index = start_index + pageSize
+  const startIndex = (currentPage - 1) * pageSize
+  const endIndex = startIndex + pageSize
   const originTotal = originalData.length // originalData total data
   const isAllConditionNull =
     !conditions || conditions.every((v) => v.value === '' || v.value === null) // 是否存在有效过滤条件
@@ -19,7 +19,7 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
   if (isAllConditionNull) {
     data =
       currentPage && pageSize
-        ? originalData.slice(start_index, end_index)
+        ? originalData.slice(startIndex, endIndex)
         : originalData
     total = originalData.length
   } else {
@@ -31,49 +31,46 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
       }, {} as ConditionValidMap)
 
       for (const k in validMap) {
-        const curr_condition_o = conditions.find((v) => v.key === k) // 某条件信息对象
+        const currConditionObject = conditions.find((v) => v.key === k) // 某条件信息对象
 
-        if (validMap.hasOwnProperty(k) && curr_condition_o) {
-          const curr_condition_o_val = curr_condition_o.value
+        if (validMap.hasOwnProperty(k) && currConditionObject) {
+          const currConditionValue = currConditionObject.value
 
-          const ori_val = get(ori, k)
+          const currOriginalValue = get(ori, k)
 
           /* 匹配方式 S */
-          if (curr_condition_o.daterange) {
+          if (currConditionObject.daterange) {
             // 1.日期范围
             const start = +new Date(
-              curr_condition_o_val
-                ? (curr_condition_o_val as ArrayOfString)[0]
-                : 0
+              currConditionValue ? (currConditionValue as ArrayOfString)[0] : 0
             )
             const end = +new Date(
-              curr_condition_o_val
-                ? (curr_condition_o_val as ArrayOfString)[1]
-                : 0
+              currConditionValue ? (currConditionValue as ArrayOfString)[1] : 0
             )
-            const now = +new Date(ori_val)
+            const now = +new Date(currOriginalValue)
 
             validMap[k] = (start <= now && end >= now) || !start
-          } else if (curr_condition_o.validHandler) {
+          } else if (currConditionObject.validHandler) {
             // 2.自定义校验
-            validMap[k] = curr_condition_o.validHandler(
-              curr_condition_o_val,
-              ori_val
+            validMap[k] = currConditionObject.validHandler(
+              currConditionValue,
+              currOriginalValue
             )
           } else {
             // 3.模糊、全匹配
-            const fuzzy_ori_val = ori_val.toLowerCase
-              ? ori_val.toLowerCase()
-              : ori_val
-            const fuzzy_curr_condition_o_val = (curr_condition_o_val as string)
+            const currFuzzyOriginalValue = currOriginalValue.toLowerCase
+              ? currOriginalValue.toLowerCase()
+              : currOriginalValue
+            const currFuzzyConditionValue = (currConditionValue as string)
               .toLowerCase
-              ? (curr_condition_o_val as string).toLowerCase()
-              : curr_condition_o_val
+              ? (currConditionValue as string).toLowerCase()
+              : currConditionValue
 
             validMap[k] =
-              (curr_condition_o.fuzzy
-                ? fuzzy_ori_val.search(fuzzy_curr_condition_o_val) !== -1
-                : ori_val == curr_condition_o_val) || curr_condition_o_val == ''
+              (currConditionObject.fuzzy
+                ? currFuzzyOriginalValue.search(currFuzzyConditionValue) !== -1
+                : currOriginalValue === currConditionValue) ||
+              currConditionValue == ''
           }
           /* 匹配方式 E */
         }
@@ -87,7 +84,7 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
     // pagination data from conditions filter
     data =
       currentPage && pageSize
-        ? filteredArr.slice(start_index, end_index)
+        ? filteredArr.slice(startIndex, endIndex)
         : filteredArr
     // pagination total data
     total = filteredArr.length

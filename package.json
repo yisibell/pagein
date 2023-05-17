@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "release": "npm run build && changelogen --release && npm publish --access=public && git push --follow-tags"
+    "release": "npm run build && changelogen --release && npm publish && git push --follow-tags"
   },
   "keywords": [
     "pagination",
@@ -52,5 +52,8 @@
   },
   "engines": {
     "node": ">= 12.x"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
