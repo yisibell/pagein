@@ -61,6 +61,7 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
             const currFuzzyOriginalValue = currOriginalValue.toLowerCase
               ? currOriginalValue.toLowerCase()
               : currOriginalValue
+
             const currFuzzyConditionValue = (currConditionValue as string)
               .toLowerCase
               ? (currConditionValue as string).toLowerCase()
