@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v2.3.0
+
+[compare changes](https://github.com/yisibell/pagein/compare/v2.2.0...v2.3.0)
+
+### 🚀 Enhancements
+
+- Refactor rollup to v3 ([dd9ad97](https://github.com/yisibell/pagein/commit/dd9ad97))
+
+### 🏡 Chore
+
+- Sync dist ([678ff98](https://github.com/yisibell/pagein/commit/678ff98))
+- Add example ([7fc58f6](https://github.com/yisibell/pagein/commit/7fc58f6))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v2.2.0
 
 [compare changes](https://github.com/yisibell/pagein/compare/v2.1.0...v2.2.0)
