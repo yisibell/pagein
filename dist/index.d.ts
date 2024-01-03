@@ -49,4 +49,4 @@ type Paging = <T>(
 
 declare const paging: Paging
 
-export { Conditions, Pagination, PagingOptions, PagingReturns, paging };
+export { type Conditions, type Pagination, type PagingOptions, type PagingReturns, paging };

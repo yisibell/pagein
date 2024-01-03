@@ -12,6 +12,8 @@
 
 A tiny paging util function.
 
+- [Release Notes](./CHANGELOG.md).
+
 # Installation
 
 ``` bash
@@ -157,6 +159,4 @@ console.log(total) // 查询结果总条数，3
 console.log(data) // 查询结果, [{ a: 'foo' }, { a: 'foo' }]
 ```
 
-# CHANGE LOG
 
-SEE <a href="./CHANGELOG.md">CHANGE LOG</a>
