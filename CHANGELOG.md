@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.4.0
+
+[compare changes](https://github.com/yisibell/pagein/compare/v2.3.0...v2.4.0)
+
+### 🚀 Enhancements
+
+- Upgrade all dependencies to latest version ([e1db631](https://github.com/yisibell/pagein/commit/e1db631))
+
+### ❤️ Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v2.3.0
 
 [compare changes](https://github.com/yisibell/pagein/compare/v2.2.0...v2.3.0)
