@@ -28,9 +28,9 @@ $ npm i pagein
 
 ## 参数
 
-1. **ori {Array of Object}**： 源数据（必需）。
+1. `originData (Array of Object)`: 源数据（必需）。
 
-2. **options.pagination {Object}**： 分页控制。
+2. `options.pagination (Object)`： 分页控制。
 
 ``` js
 {
@@ -39,7 +39,7 @@ $ npm i pagein
 }
 ```
 
-3. **options.conditions {Array of Object}**： 查询条件。
+3. `options.conditions (Array of Object)`： 查询条件。
 
 ``` js
 const conditions = [
@@ -87,7 +87,7 @@ console.log(data) // [{ a: { b: 'foo'} }]
 
 ## 返回
 
-**{object}**：返回一个查询结果对象。
+返回一个查询结果对象。
 
 ``` js
 {
