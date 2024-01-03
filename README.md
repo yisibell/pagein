@@ -41,7 +41,7 @@ import { paging } from 'pagein'
 import { paging } from 'pagein'
 
 // Original data
-const ori = [
+const originalData = [
   { a: 'bar' },
   { a: 'bar2' },
   { a: 'foo' },
@@ -53,8 +53,10 @@ const conditions = [
   { key: 'a', value: 'foo' }
 ]
 
-const { total, data } = paging(ori, { conditions } )
+// Query
+const { total, data } = paging(originalData, { conditions } )
 
+// Results
 console.log(total) // 1
 console.log(data) // [{ a: 'foo' }]
 ```
@@ -65,7 +67,7 @@ console.log(data) // [{ a: 'foo' }]
 import { paging } from 'pagein'
 
 // Original data
-const ori = [
+const originalData = [
   { a: 'bar' },
   { a: 'bar2' },
   { a: 'foo' },
@@ -87,10 +89,38 @@ const conditions = [
   { key: 'a', value: 'foo' }
 ]
 
-const { total, data } = paging(ori, { pagination , conditions })
+// Query
+const { total, data } = paging(originalData, { pagination , conditions })
 
+// Results
 console.log(total) // 3
 console.log(data) // [{ a: 'foo' }, { a: 'foo' }]
 ```
 
+- Complex data structures.
+
+``` js
+import { paging } from 'pagein'
+
+// Original data
+const originalData = [
+  { a: { b: 'foo', c: 3 } },
+  { a: { b: 'foo2' } },
+  { a: { b: 'foo3' } },
+  { a: { b: 'foo', c: 2 } },
+  { a: { b: 'bar', c: 1 } },
+]
+
+// Define conditions
+const conditions = [
+  { key: 'a.b', value: 'foo' }
+]
+
+// Query
+const { total, data } = paging(originalData, { conditions })
+
+// Results
+console.log(total) // 2
+console.log(data) // [{ a: { b: 'foo', c: 3} }, { a: { b: 'foo', c: 2 } }]
+```
 
