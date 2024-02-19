@@ -1,6 +1,6 @@
 {
   "name": "pagein",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "A tiny paging util function.",
   "main": "dist/pagein.cjs.js",
   "module": "dist/pagein.esm.js",
