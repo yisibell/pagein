@@ -42,10 +42,10 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
           if (currConditionObject.daterange) {
             // 1.日期范围
             const start = +new Date(
-              currConditionValue ? (currConditionValue as ArrayOfString)[0] : 0
+              currConditionValue ? (currConditionValue as ArrayOfString)[0] : 0,
             )
             const end = +new Date(
-              currConditionValue ? (currConditionValue as ArrayOfString)[1] : 0
+              currConditionValue ? (currConditionValue as ArrayOfString)[1] : 0,
             )
             const now = +new Date(currOriginalValue)
 
@@ -54,7 +54,7 @@ const paging: Paging = (originalData, { pagination, conditions } = {}) => {
             // 2.自定义校验
             validMap[k] = currConditionObject.validHandler(
               currConditionValue,
-              currOriginalValue
+              currOriginalValue,
             )
           } else {
             // 3.模糊、全匹配

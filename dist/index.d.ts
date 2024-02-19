@@ -18,7 +18,7 @@ interface ConditionItem {
   /**自定义检索方法，该方法被传入两个参数：`conditionValue`（当前条件字段值，即 value ），`originalValue`（源数据中对应字段值）。*/
   validHandler?: (
     conditionValue: ConditionItemValue,
-    originalValue: ConditionItemValue
+    originalValue: ConditionItemValue,
   ) => boolean
 }
 
@@ -44,7 +44,7 @@ interface PagingOptions {
 
 type Paging = <T>(
   originalData: OriginalData<T>,
-  options?: PagingOptions
+  options?: PagingOptions,
 ) => PagingReturns<T>
 
 declare const paging: Paging
